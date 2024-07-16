@@ -293,9 +293,9 @@ class cal implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent ae) {
+    public void actionPerformed(ActionEvent ap) {
 
-        Object object1 = ae.getSource();
+        Object object1 = ap.getSource();
 
         if (object1.equals(btn0) & zeroCount != 0) {
             result_textField.setText(result_textField.getText() + btn0.getLabel());
@@ -458,7 +458,7 @@ class cal implements ActionListener {
             zeroCount = 0;
         }
 
-        if (ae.getActionCommand().equals("Dark mode")) {
+        if (ap.getActionCommand().equals("Dark mode")) {
             frame1.setBackground(new Color(67, 61, 139));
             pannel_north.setBackground(new Color(90, 99, 156));
             pannel_center.setBackground(new Color(90, 99, 156));
@@ -513,7 +513,7 @@ class cal implements ActionListener {
             btnClear.setForeground(Color.WHITE);
             btnMultiply.setForeground(Color.WHITE);
 
-        } else if (ae.getActionCommand().equals("Light mode")) {
+        } else if (ap.getActionCommand().equals("Light mode")) {
             frame1.setBackground(new Color(240, 240, 240));
             pannel_north.setBackground(new Color(240, 240, 240));
             pannel_center.setBackground(new Color(240, 240, 240));
@@ -577,7 +577,6 @@ class cal implements ActionListener {
 public class Calculator {
 
     public static void main(String[] args) {
-        cal cal; /*cal*/
-        cal = new cal();
+       new cal();
     }
 }
