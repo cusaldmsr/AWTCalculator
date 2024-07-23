@@ -24,8 +24,14 @@ The Calculator application will implement event handling to respond to user acti
 
 * Light Theam Preview
 
-![AWT-Calculator-light](https://github.com/user-attachments/assets/a2f2613c-cd70-49cd-bef4-e6645f909c3d)
+<div align=center>
+    <img src="AWT-Calculator-light.png"  height="200">
+</div>
+
 
 * Dark Theam Preview
 
-![AWT-Calculator](https://github.com/user-attachments/assets/be4a24b7-0a32-4edc-b66c-3bfa6fbafb4b)
+<div align=center>
+    <img src="AWT-Calculator.png"  height="200">
+</div>
+
