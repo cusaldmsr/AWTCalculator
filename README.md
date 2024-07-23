@@ -20,18 +20,24 @@ The Calculator application will implement event handling to respond to user acti
 
 **Full Changelog**: https://github.com/cusaldmsr/AWTCalculator/commits/v1.0.0
 
-## Preview
+<br><br>
 
-* Light Theam Preview
+<h2 align=center>
+    Light Theam Preview
+</h2>
 
 <div align=center>
-    <img src="AWT-Calculator-light.png"  height="200">
+    <img src="AWT-Calculator-light.png"  height="400">
 </div>
 
 
-* Dark Theam Preview
+
+
+<h2 align=center>
+   Dark Theam Preview
+</h2>
 
 <div align=center>
-    <img src="AWT-Calculator.png"  height="200">
+    <img src="AWT-Calculator.png"  height="400">
 </div>
 
