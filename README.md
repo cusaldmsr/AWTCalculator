@@ -41,3 +41,26 @@ The Calculator application will implement event handling to respond to user acti
     <img src="AWT-Calculator.png"  height="400">
 </div>
 
+<h1> Contributors </h1>
+
+<!-- readme: contributors -start -->
+<table>
+<tr>
+    <td align="center">
+        <a href="https://github.com/cusaldmsr" text-decoration="none">
+            <img src="cusaldmzr.png" width="100;" alt="Cusaldmsr"/>
+            <br />
+            <sub><b>Cusaldmsr</b></sub>
+        </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/lint-action">
+            <img src="cusaldmzr.png" width="100;" alt=""/>
+            <br />
+            <sub><b>Cusaldmzr</b></sub>
+        </a>
+    </td>
+
+</table>
+<!-- readme: contributors -end -->
+
