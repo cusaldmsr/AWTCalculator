@@ -27,7 +27,7 @@ The Calculator application will implement event handling to respond to user acti
 </h2>
 
 <div align=center>
-    <img src="AWT-Calculator-light.png"  height="400">
+    <img src="Resources/AWT-Calculator-light.png"  height="400">
 </div>
 
 
@@ -38,7 +38,7 @@ The Calculator application will implement event handling to respond to user acti
 </h2>
 
 <div align=center>
-    <img src="AWT-Calculator.png"  height="400">
+    <img src="Resources/AWT-Calculator.png"  height="400">
 </div>
 
 <h1> Contributors </h1>
@@ -48,14 +48,14 @@ The Calculator application will implement event handling to respond to user acti
 <tr>
     <td align="center">
         <a href="https://github.com/cusaldmsr" text-decoration="none">
-            <img src="cusaldmzr.png" width="100;" alt="Cusaldmsr"/>
+            <img src="Resources/cusaldmsr.png" width="100;" alt="Cusaldmsr"/>
             <br />
             <sub><b>Cusaldmsr</b></sub>
         </a>
     </td>
     <td align="center">
-        <a href="https://github.com/lint-action">
-            <img src="cusaldmzr.png" width="100;" alt=""/>
+        <a href="https://github.com/cusaldmzr">
+            <img src="Resources/cusaldmzr.png" width="100;" alt=""/>
             <br />
             <sub><b>Cusaldmzr</b></sub>
         </a>
