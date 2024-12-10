@@ -1,4 +1,4 @@
-## Java AWT Calculator
+<h1 align="center"> Java AWT Calculator </h1>
 
 <p align="center">
         <img src="https://img.shields.io/github/created-at/cusaldmsr/AWTCalculator"/>
@@ -8,7 +8,7 @@
         <img src="https://img.shields.io/github/watchers/cusaldmsr/AWTCalculator"/>
 </p>
 
-This Simple Calculator application was built by using Java's Abstract Window Toolkit (AWT). This application will utilize various GUI components (Frames, Panel, Layout, Buttons, Text Field, and Menus) provided by AWT to create an interactive and user-friendly interface. The Calculator will be capable of performing basic arithmetic operations such as addition, subtraction, multiplication, and division. Additionally, percentage, square, square Root and backspace operations were added to this Calculator.
+<p align="center">This Simple Calculator application was built by using Java's Abstract Window Toolkit (AWT). This application will utilize various GUI components (Frames, Panel, Layout, Buttons, Text Field, and Menus) provided by AWT to create an interactive and user-friendly interface. The Calculator will be capable of performing basic arithmetic operations such as addition, subtraction, multiplication, and division. Additionally, percentage, square, square Root and backspace operations were added to this Calculator.</p>
 
 The Calculator application will implement event handling to respond to user actions. As an event handler this application uses ActionListener & Action Performed.
 
