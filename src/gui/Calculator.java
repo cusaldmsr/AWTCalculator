@@ -1,6 +1,5 @@
 package gui;
 
-
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Color;
@@ -21,15 +20,18 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent; 
 
 class Close extends WindowAdapter { 
-
     @Override
     public void windowClosing(WindowEvent d) {
         System.exit(0);
     }
 }
 
+// Singleton implementation for cal class with null-safe parsing
 class cal implements ActionListener {
+    // Singleton instance
+    private static cal instance = null;
 
+    // Frame and UI components
     Frame frame1 = new Frame();
 
     // create buttons 
@@ -73,8 +75,8 @@ class cal implements ActionListener {
     Panel pannel_west = new Panel();
     Panel pannel_south = new Panel();
 
-    cal() {
-
+    // Private constructor for Singleton
+    private cal() {
         //set frame properties
         frame1.addWindowListener(new Close());
         frame1.setBackground(Color.WHITE);
@@ -292,14 +294,30 @@ class cal implements ActionListener {
         frame1.setVisible(true);
     }
 
+    // Singleton accessor
+    public static cal getInstance() {
+        if (instance == null) {
+            instance = new cal();
+        }
+        return instance;
+    }
+
+    // Utility method for safe parsing
+    private double safeParseDouble(String value) {
+        try {
+            if (value == null || value.trim().isEmpty()) return 0.0;
+            return Double.parseDouble(value.trim());
+        } catch (Exception e) {
+            return 0.0;
+        }
+    }
+
     @Override
     public void actionPerformed(ActionEvent ap) {
-
         Object object1 = ap.getSource();
 
         if (object1.equals(btn0) & zeroCount != 0) {
             result_textField.setText(result_textField.getText() + btn0.getLabel());
-
         } else if (object1.equals(btn1)) {
             result_textField.setText(zeroCount == 0 ? (" " + btn1.getLabel()) : (result_textField.getText() + btn1.getLabel()));
             zeroCount++;
@@ -331,98 +349,90 @@ class cal implements ActionListener {
             decimalCount++;
             zeroCount++;
             result_textField.setText(result_textField.getText() + btnDot.getLabel());
-
         } else if (object1.equals(btnAdd)) {
             if (firstValue == null) {
                 firstValue = result_textField.getText();
-
             } else {
                 secondValue = result_textField.getText();
 
-                firstDoubleValue = Double.parseDouble(firstValue);
-                secondDoubleValue = Double.parseDouble(secondValue);
+                firstDoubleValue = safeParseDouble(firstValue);
+                secondDoubleValue = safeParseDouble(secondValue);
 
                 Answer = firstDoubleValue + secondDoubleValue;
                 firstValue = "" + Answer;
-
             }
             result_textField.setText(" ");
             operator = btnAdd.getLabel();
             decimalCount = 0;
-
         } else if (object1.equals(btnSubtract)) {
             if (firstValue == null) {
                 firstValue = result_textField.getText();
             } else {
                 secondValue = result_textField.getText();
 
-                firstDoubleValue = Double.parseDouble(firstValue);
-                secondDoubleValue = Double.parseDouble(secondValue);
+                firstDoubleValue = safeParseDouble(firstValue);
+                secondDoubleValue = safeParseDouble(secondValue);
                 Answer = firstDoubleValue - secondDoubleValue;
                 firstValue = "" + Answer;
             }
             result_textField.setText(" ");
             operator = btnSubtract.getLabel();
             decimalCount = 0;
-
         } else if (object1.equals(btnMultiply)) {
             if (firstValue == null) {
                 firstValue = result_textField.getText();
             } else {
                 secondValue = result_textField.getText();
 
-                firstDoubleValue = Double.parseDouble(firstValue);
-                secondDoubleValue = Double.parseDouble(secondValue);
+                firstDoubleValue = safeParseDouble(firstValue);
+                secondDoubleValue = safeParseDouble(secondValue);
                 Answer = firstDoubleValue * secondDoubleValue;
                 firstValue = "" + Answer;
             }
             result_textField.setText(" ");
             operator = btnMultiply.getLabel();
             decimalCount = 0;
-
         } else if (object1.equals(btnDivide)) {
             if (firstValue == null) {
                 firstValue = result_textField.getText();
             } else {
                 secondValue = result_textField.getText();
 
-                firstDoubleValue = Double.parseDouble(firstValue);
-                secondDoubleValue = Double.parseDouble(secondValue);
-                Answer = firstDoubleValue / secondDoubleValue;
+                firstDoubleValue = safeParseDouble(firstValue);
+                secondDoubleValue = safeParseDouble(secondValue);
+                Answer = secondDoubleValue == 0.0 ? 0.0 : firstDoubleValue / secondDoubleValue;
                 firstValue = "" + Answer;
             }
             result_textField.setText(" ");
             operator = btnDivide.getLabel();
             decimalCount = 0;
-
         } else if (object1.equals(btnSqRt)) {
             firstValue = result_textField.getText();
-            firstDoubleValue = Double.parseDouble(firstValue);
+            firstDoubleValue = safeParseDouble(firstValue);
             Answer = Math.sqrt(firstDoubleValue);
             result_textField.setText(" " + Answer);
-
         } else if (object1.equals(btnPercentage)) {
             secondValue = result_textField.getText();
 
-            firstDoubleValue = Double.parseDouble(firstValue);
-            secondDoubleValue = Double.parseDouble(secondValue);
+            firstDoubleValue = safeParseDouble(firstValue);
+            secondDoubleValue = safeParseDouble(secondValue);
 
             if ("÷".equals(operator)) {
-                Answer = (firstDoubleValue / secondDoubleValue) * 100;
+                Answer = (secondDoubleValue == 0.0) ? 0.0 : (firstDoubleValue / secondDoubleValue) * 100;
                 result_textField.setText(" " + Answer);
             }
             firstValue = null;
             decimalCount = 0;
         } else if (object1.equals(btnNegativeMark)) {
-            if (zeroCount != 0 & Double.parseDouble(result_textField.getText()) > 0) {
-                firstDoubleValue = Double.parseDouble(result_textField.getText());
-                result_textField.setText(" -" + firstDoubleValue);
+            double currentValue = safeParseDouble(result_textField.getText());
+            if (zeroCount != 0 && currentValue > 0) {
+                result_textField.setText(" -" + currentValue);
             }
         } else if (object1.equals(btnEqual)) {
             secondValue = result_textField.getText();
 
-            firstDoubleValue = Double.parseDouble(firstValue);
-            secondDoubleValue = Double.parseDouble(secondValue);
+            firstDoubleValue = safeParseDouble(firstValue);
+            secondDoubleValue = safeParseDouble(secondValue);
 
             if (null != operator) switch (operator) {
                 case "+":
@@ -438,7 +448,7 @@ class cal implements ActionListener {
                     result_textField.setText(" " + Answer);
                     break;
                 case "÷":
-                    Answer = firstDoubleValue / secondDoubleValue;
+                    Answer = secondDoubleValue == 0.0 ? 0.0 : firstDoubleValue / secondDoubleValue;
                     result_textField.setText(" " + Answer);
                     break;
                 default:
@@ -471,26 +481,26 @@ class cal implements ActionListener {
             result_textField.setBackground(new Color(67, 61, 139));
             result_textField.setForeground(Color.WHITE);
 
-        btn0.setBackground(new Color(46, 35, 108));
-        btn1.setBackground(new Color(46, 35, 108));
-        btn2.setBackground(new Color(46, 35, 108));
-        btn3.setBackground(new Color(46, 35, 108));
-        btn4.setBackground(new Color(46, 35, 108));
-        btn5.setBackground(new Color(46, 35, 108));
-        btn6.setBackground(new Color(46, 35, 108));
-        btn7.setBackground(new Color(46, 35, 108));
-        btn8.setBackground(new Color(46, 35, 108));
-        btn9.setBackground(new Color(46, 35, 108));
-        btnDot.setBackground(new Color(46, 35, 108));
-        btnNegativeMark.setBackground(new Color(46, 35, 108));
-        btnEqual.setBackground(new Color(97, 94, 252));
-        btnAdd.setBackground(new Color(23, 21, 59));
-        btnSubtract.setBackground(new Color(23, 21, 59));
-        btnSqRt.setBackground(new Color(23, 21, 59));
-        btnDivide.setBackground(new Color(23, 21, 59));
-        btnPercentage.setBackground(new Color(23, 21, 59));
-        btnClear.setBackground(new Color(23, 21, 59));
-        btnMultiply.setBackground(new Color(23, 21, 59));
+            btn0.setBackground(new Color(46, 35, 108));
+            btn1.setBackground(new Color(46, 35, 108));
+            btn2.setBackground(new Color(46, 35, 108));
+            btn3.setBackground(new Color(46, 35, 108));
+            btn4.setBackground(new Color(46, 35, 108));
+            btn5.setBackground(new Color(46, 35, 108));
+            btn6.setBackground(new Color(46, 35, 108));
+            btn7.setBackground(new Color(46, 35, 108));
+            btn8.setBackground(new Color(46, 35, 108));
+            btn9.setBackground(new Color(46, 35, 108));
+            btnDot.setBackground(new Color(46, 35, 108));
+            btnNegativeMark.setBackground(new Color(46, 35, 108));
+            btnEqual.setBackground(new Color(97, 94, 252));
+            btnAdd.setBackground(new Color(23, 21, 59));
+            btnSubtract.setBackground(new Color(23, 21, 59));
+            btnSqRt.setBackground(new Color(23, 21, 59));
+            btnDivide.setBackground(new Color(23, 21, 59));
+            btnPercentage.setBackground(new Color(23, 21, 59));
+            btnClear.setBackground(new Color(23, 21, 59));
+            btnMultiply.setBackground(new Color(23, 21, 59));
 
             btn0.setForeground(Color.WHITE);
             btn1.setForeground(Color.WHITE);
@@ -568,15 +578,15 @@ class cal implements ActionListener {
             btnClear.setForeground(new Color(67, 61, 139));
             btnMultiply.setForeground(new Color(67, 61, 139));
         }
-        throw new UnsupportedOperationException("Not supported yet");
-        //To change body of generated methods, choose Tools | Templates.
     }
-
 }
 
 public class Calculator {
-
     public static void main(String[] args) {
-       new cal();
+        if (java.awt.GraphicsEnvironment.isHeadless()) {
+            System.out.println("Headless environment detected. GUI cannot be started.");
+            System.exit(1);
+        }
+        cal.getInstance();
     }
 }
